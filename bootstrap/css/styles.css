@@ -1,0 +1,20 @@
+.numeros {
+    font-size: 20px;
+    color: blue;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.estrelas {
+    font-size: 20px;
+    color: red;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#ultimoData {
+    font-size: 20px;
+    color: green;
+    margin-top: 20px;
+
+}
