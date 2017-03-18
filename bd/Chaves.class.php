@@ -22,7 +22,6 @@ class Chaves extends BDMySQL
             if ($rs->fetch(PDO::FETCH_ASSOC) == false) {
                 if($this->inserirNovoResultado($data,$numeros,$estrelas)){
                     $resultado = array("resultado"=>"success", "mensagem"=>"Novo sorteio inserido com sucesso");
-
                 }else{
                     $resultado = array("resultado"=>"error", "mensagem"=>"Erro ao inserir o novo sorteio");
                 }
@@ -51,19 +50,28 @@ class Chaves extends BDMySQL
     }
 
 
-    function verificaPremio($data, $numeros, $estrelas){
+    function verificaPremio(){
         $sql = "SELECT * FROM chaves WHERE activa=1";
         $resultado = $this->bd->executarSQL($sql);
 
-        $sql1 = "SELECT * FROM resultados WHERE data='{$data}'";
+        $sql1 = "SELECT * FROM resultados ORDER BY id DESC LIMIT 1";
         $resultado1 = $this->bd->executarSQL($sql1);
-        $result = array();
-        $row = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $row = $resultado->fetch(PDO::FETCH_ASSOC);
+        $rsChave = array_values($row);
+        array_shift($rsChave);
+        array_pop($rsChave);
+        $rsChaveNumbers = array_slice($rsChave, 0, 5, true);
+        $rsChaveStars = array_slice($rsChave, 5, 6, true);
         $row1 = $resultado1->fetch(PDO::FETCH_ASSOC);
-        $result = array_intersect($row1, $row);
-
-
-
+        $rsResult = array_values($row1);
+        array_shift($rsResult);
+        array_pop($rsResult);
+        $rsResultNumbers = array_slice($rsResult, 0, 5, true);
+        $rsResultStars = array_slice($rsResult, 5, 6, true);
+        $resultNumbers = array_intersect($rsResultNumbers, $rsChaveNumbers);
+        $resultStars = array_intersect($rsResultStars, $rsChaveStars);
+        $result = array("numeros"=>$resultNumbers, "estrelas"=>$resultStars);
         echo json_encode($result);
 
     }
@@ -311,7 +319,7 @@ class Chaves extends BDMySQL
         return $resultado;
     }*/
 
-    function endProduto()
+    function endCon()
     {
         $this->bd->fecharBD();
     }

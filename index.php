@@ -1,4 +1,5 @@
-<?php /*header('Access-Control-Allow-Origin: *'); */?>
+<?php header('Access-Control-Allow-Origin: *'); ?>
+
 <!DOCTYPE html>
 <html lang="pt_PT">
 <head>

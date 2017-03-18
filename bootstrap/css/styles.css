@@ -1,20 +1,52 @@
 .numeros {
-    font-size: 20px;
-    color: blue;
+    font-family: "Bauhaus 93";
+    font-size: .85em;
+    color: navy;
     margin-top: 20px;
     margin-right: 20px;
 }
 
 .estrelas {
-    font-size: 20px;
+    font-family: "Bauhaus 93";
+    font-size: .85em;
     color: red;
     margin-top: 20px;
     margin-left: 20px;
 }
 
-#ultimoData {
-    font-size: 20px;
+.data {
+    font-family: "Bauhaus 93";
+    font-size: .85em;
     color: green;
     margin-top: 20px;
-
 }
+
+.painel{
+    width: 95%;
+    height: 200px;
+    border-radius: 10px;
+    border: solid navy 2px;
+    background: lightyellow;
+    margin: 5px 5px 5px 5px;
+}
+
+.painel-header{
+    width: 95%;
+    height: 40px;
+    background: navy;
+    border-radius: 10px;
+    margin: 5px auto;
+    font-family: "Bauhaus 93";
+    font-size: 2em;
+    color: lightyellow;
+    text-align: center;
+}
+
+.painel-body{
+    width: 95%;
+    margin: 5px auto;
+    text-align: center;
+}
+
+
+

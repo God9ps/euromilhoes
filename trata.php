@@ -11,12 +11,25 @@ if (isset ( $_POST ['accao'] )) {
     $chaves = new Chaves();
 
     switch ($accao) {
+        case 'teste':
+            echo $chaves->verificaPremio();
+            break;
+
+        case 'getResults':
+
+            $url = 'https://nunofcguerreiro.com/api-euromillions-json';
+
+            echo file_get_contents($url);
+
+            break;
+
         case 'verificaNovoSorteio':
 
             $dados['data'] = $_POST['data'];
 
-//            echo $chaves->verificarNovoSorteio($dados['data'],$_POST['numeros'], $_POST['estrelas']);
-            echo $chaves->verificaPremio($dados['data'],$_POST['numeros'], $_POST['estrelas']);
+            echo $chaves->verificarNovoSorteio($dados['data'],$_POST['numeros'], $_POST['estrelas']);
+            $chaves->endCon();
+//            echo $chaves->verificaPremio($dados['data'],$_POST['numeros'], $_POST['estrelas']);
 
 //            echo $chaves->verificarNovoSorteio($_POST['data']);
 
